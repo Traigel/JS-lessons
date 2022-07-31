@@ -42,7 +42,7 @@ console.log('Task 01: ' + sum(3)(6))
 // counter(); // 3
 const makeCounter = () => {
     let x = 0
-    return function task2() {
+    return function() {
         return x = x + 1
     }
 }
