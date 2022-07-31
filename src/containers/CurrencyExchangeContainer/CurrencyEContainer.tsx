@@ -10,7 +10,7 @@ import {
 } from '../../redux/actions';
 import { connect, ConnectedProps } from 'react-redux';
 
-const CurrencyEContainer: React.FC<TProps> = props => {
+const CurrencyEContainer: React.FC<any> = props => {
 
     const {
         currencies,
