@@ -1,17 +1,17 @@
-import { CurrencyReducersTypes } from './actions';
+import { ActionTypes } from './actions';
 
 
 export type CurrencyType = {
-    currencyName: string;
-    buyRate: number;
-    sellRate: number;
+    currencyName: string;               // название валюты
+    buyRate: number;                    // курс покупки
+    sellRate: number;                   // курс продажи
 };
 export type CurrencyState = {
-    currencies: Array<CurrencyType>;
-    currentCurrency: string;
-    isBuying: boolean;
-    amountOfBYN: string;
-    amountOfCurrency: string;
+    currencies: Array<CurrencyType>;    // валюты
+    currentCurrency: string;            // текущая валюта AC3
+    isBuying: boolean;                  // покупает/продаёт AC2
+    amountOfBYN: string;                // сумма в белорусских рублях AC1
+    amountOfCurrency: string;           // количество валюты AC1
 };
 
 const initialState: CurrencyState = {
@@ -38,9 +38,27 @@ const initialState: CurrencyState = {
     amountOfCurrency: '',
 };
 
-export const currencyReducer = (state: CurrencyState = initialState, action: CurrencyReducersTypes): CurrencyState => {
-    // @ts-ignore
+export const currencyReducer = (state: CurrencyState = initialState, action: ActionTypes): CurrencyState => {
     switch (action.type) {
+        case 'CHANGE_CURRENCY_FIELD_TYPE' : {
+            return {
+                ...state,
+                amountOfBYN: action.amountOfBYN,
+                amountOfCurrency: action.amountOfCurrency
+            }
+        }
+        case 'CHANGE_CHANGE_ACTION' : {
+            return {
+                ...state,
+                isBuying: action.isBuying
+            }
+        }
+        case 'CHANGE_CURRENT_CURRENCY' : {
+            return {
+                ...state,
+                currentCurrency: action.currentCurrency
+            }
+        }
         default:
             return state;
     }

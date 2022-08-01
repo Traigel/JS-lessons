@@ -3,14 +3,14 @@ import CurrencyExchange from '../../components/CurrencyExchange/CurrencyExchange
 import { CurrencyState, CurrencyType } from '../../redux/currencyReducer';
 import { Dispatch } from 'redux';
 import {
-    ChangeActionAC,
-    ChangeCurrencyFieldAC,
-    СhangeCurrentCurrencyAC,
-    CurrencyReducersTypes
+    changeActionAC,
+    changeCurrencyFieldAC,
+    changeCurrentCurrencyAC,
+    ActionTypes
 } from '../../redux/actions';
 import { connect, ConnectedProps } from 'react-redux';
 
-const CurrencyEContainer: React.FC<any> = props => {
+const CurrencyEContainer: React.FC<CurrencyState & MapDispatchToPropsType> = props => {
 
     const {
         currencies,
@@ -23,7 +23,9 @@ const CurrencyEContainer: React.FC<any> = props => {
         changeCurrency,
     } = props;
 
-    let currencyRate: number = 0;
+    console.log(isBuying)
+
+    let currencyRate: number = 0;   // курс валюты
     const currenciesName = currencies.map((currency: CurrencyType) => {
         if (currency.currencyName === currentCurrency) {
             currencyRate = isBuying ? currency.buyRate : currency.sellRate;
@@ -31,7 +33,7 @@ const CurrencyEContainer: React.FC<any> = props => {
         return currency.currencyName;
     });
 
-    const changeCurrencyField = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changeCurrencyFieldHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.currentTarget.value;
         if (!isFinite(+value)) return;
         if (e.currentTarget.dataset.currency) {
@@ -56,6 +58,7 @@ const CurrencyEContainer: React.FC<any> = props => {
     };
 
     const changeCurrentCurrency = (e: React.MouseEvent<HTMLLIElement>) => {
+        console.log(e.currentTarget.dataset.currency)
         e.currentTarget.dataset.currency && changeCurrency(e.currentTarget.dataset.currency);
     };
 
@@ -68,13 +71,15 @@ const CurrencyEContainer: React.FC<any> = props => {
                 isBuying={isBuying}
                 amountOfBYN={amountOfBYN}
                 amountOfCurrency={amountOfCurrency}
-                changeCurrencyField={changeCurrencyField}
+                changeCurrencyField={changeCurrencyFieldHandler}
                 changeAction={changeAction}
                 changeCurrentCurrency={changeCurrentCurrency}
             />
         </React.Fragment>
     );
 };
+
+
 
 const mapStateToProps = ( { currency } : {currency: CurrencyState} ): CurrencyState => {
     return {
@@ -86,25 +91,26 @@ const mapStateToProps = ( { currency } : {currency: CurrencyState} ): CurrencySt
     };
 };
 
-// @ts-ignore
-const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : any => {
+type MapDispatchToPropsType = {
+    setCurrencyAmount: (amountOfBYN: string, amountOfCurrency: string) => void
+    setAction: (isBuying: boolean) => void
+    changeCurrency: (currency: string) => void
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<ActionTypes>) : MapDispatchToPropsType => {
     return {
         setCurrencyAmount(amountOfBYN: string, amountOfCurrency: string) {
-            dispatch(ChangeCurrencyFieldAC(amountOfBYN, amountOfCurrency));
+            dispatch(changeCurrencyFieldAC(amountOfBYN, amountOfCurrency));
         },
         setAction(isBuying: boolean) {
-            dispatch(ChangeActionAC(isBuying));
+            dispatch(changeActionAC(isBuying));
         },
         changeCurrency(currency: string) {
-            dispatch(СhangeCurrentCurrencyAC(currency));
+            dispatch(changeCurrentCurrencyAC(currency));
         },
     };
 };
 
-// @ts-ignore
-const connector = connect(mapStateToProps, mapDispatchToProps);
+type TProps = ConnectedProps<typeof CurrencyExchangeContainer>;
 
-type TProps = ConnectedProps<typeof connector>;
-
-export default connector(CurrencyEContainer);
-
+export const CurrencyExchangeContainer = connect(mapStateToProps, mapDispatchToProps)(CurrencyEContainer);

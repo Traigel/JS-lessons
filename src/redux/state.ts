@@ -1,4 +1,4 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, legacy_createStore } from "redux";
 import { currencyReducer } from './currencyReducer';
 
 const reducers = combineReducers({
@@ -6,4 +6,4 @@ const reducers = combineReducers({
 });
 export type IGlobalState = ReturnType<typeof reducers>;
 
-export const store = createStore(reducers);
+export const store = legacy_createStore(reducers);
