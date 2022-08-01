@@ -1,5 +1,5 @@
-import { combineReducers, legacy_createStore } from "redux";
-import { currencyReducer } from './currencyReducer';
+import {combineReducers, legacy_createStore} from "redux";
+import {currencyReducer} from './currencyReducer';
 
 const reducers = combineReducers({
     currency: currencyReducer,

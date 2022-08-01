@@ -18,7 +18,7 @@ export const changeActionAC = (isBuying: boolean) => {  //изменить по�
     } as const
 };
 
-export const changeCurrentCurrencyAC = (currentCurrency: string)=> {  //изменить текущую валюту
+export const changeCurrentCurrencyAC = (currentCurrency: string) => {  //изменить текущую валюту
     return {
         type: 'CHANGE_CURRENT_CURRENCY',
         currentCurrency
