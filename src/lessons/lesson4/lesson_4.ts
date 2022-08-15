@@ -91,9 +91,7 @@ const print = (x: any) => {
 }
 
 promise6
-    .then(date => {
-        onSuccess(date.message)
-    })
+    .then(date => onSuccess(date.message))
     .then(date => {
         print(date)
     })
