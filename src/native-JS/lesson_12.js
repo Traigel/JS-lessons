@@ -90,3 +90,13 @@ function User(name) {
 }
 
 const vladimir1 = new User('Vladimir')
+
+//=========================================================================
+
+function MyFirstConstructorFunc (name, age) {
+    this.name = name
+    this.age = age
+    this.greeting = function () {
+        console.log(`My name is ${this.name}. I am ${this.age}`)
+    }
+}
