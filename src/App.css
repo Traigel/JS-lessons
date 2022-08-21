@@ -1,9 +1,9 @@
 .container {
-  width: 40vw;
-  margin: 0 auto;
   margin-top: 50px;
 }
 .currency {
+  width: 40vw;
+  margin: 0 auto;
   padding: 0 15px;
   border: 2px solid cornflowerblue;
   border-radius: 10px;

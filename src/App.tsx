@@ -12,9 +12,11 @@ import './lessons/lesson8/lesson8';
 function App() {
     return (
         <div className="container">
-            <Lesson1 />
-            {/*<Lesson3 />*/}
-            <Lesson4 />
+            <Lesson1/>
+            <hr/>
+            <Lesson3/>
+            <hr/>
+            <Lesson4/>
         </div>
     );
 }
