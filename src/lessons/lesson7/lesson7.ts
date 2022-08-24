@@ -24,7 +24,7 @@ class Animal {
     constructor(name: string = 'Animal') {
         this.name = name;
     };
-    name: string = '';
+    name: string
     walk() {
         console.log(`${this.name} walking`)
     };

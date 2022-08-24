@@ -11,12 +11,13 @@
 .poster img {
     width: 200px;
     height: 300px;
-
 }
 
 .film {
     width: 500px;
-
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .film div div {
