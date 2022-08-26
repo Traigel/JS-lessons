@@ -123,12 +123,12 @@
 
 // class User {
 //     #age = 23
-
+//
 //     get age() {
 //         console.log(this.#age)
 //         return 'Hello ' + ' ' + this.#age
 //     }
-
+//
 //     set age(value) {
 //         //Some validation
 //         this.#age = value

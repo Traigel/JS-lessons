@@ -12,10 +12,12 @@ console.log('Lesson 6');
 // Создать массив из десяти элементов такого типа, упорядочить записи по возрастанию среднего балла.
 // Добавить возможность вывода фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
 
+
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
 // Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?
 // Можно ли создать метод класса который будет удалять экземпляр класса?
+
 
 // Task 03
 // Составить описание класса для представления времени. Предусмотреть возможности установки времени и изменения его отдельных
@@ -24,17 +26,76 @@ console.log('Lesson 6');
 // Создать метод выводящий время в строке формата HH:MM:SS
 // Создать класс по вышеуказанному описанию
 
+class Time {
+
+    // @ts-ignore
+    #HH: number = 0
+    // @ts-ignore
+    #MM: number = 0
+    // @ts-ignore
+    #SS: number = 0
+
+    HHDefault(HH:number) {
+        this.#HH = HH
+    }
+    MMDefault(MM: number) {
+        this.#MM = MM
+    }
+    SSDefault(SS: number) {
+        this.#SS = SS
+    }
+    timeDefault() {
+        console.log(`Time: ${this.#HH}:${this.#MM}:${this.#SS}`)
+    }
+}
+
+const t = new Time()
+t.HHDefault(19)
+t.MMDefault(50)
+t.SSDefault(10)
+t.timeDefault()
+
 // Task 04
 // Класс Покупатель: Фамилия, Имя, Адрес, Номер банковского счета;
 // Методы: установка значений атрибутов, получение значений атрибутов, вывод информации.
 // Создать массив объектов данного класса.
 // Вывести список покупателей в алфавитном порядке и список покупателей, у которых номер кредитной карточки находится в заданном диапазоне.
 
+class Buyer {
+    // @ts-ignore
+    #name:string = ''
+    // @ts-ignore
+    #address: string = ''
+    // @ts-ignore
+    #bankAccountNumber: string = ''
+
+    set name(value: string) {
+        this.#name = value
+    }
+    set address(value: string) {
+        this.#address = value
+    }
+    set bankAccountNumber(value: string) {
+        this.#bankAccountNumber = value
+    }
+
+    get name() {
+        return this.#name || 'null'
+    }
+    get address() {
+        return this.#address  || 'null'
+    }
+    get bankAccountNumber() {
+        return this.#bankAccountNumber  || 'null'
+    }
+}
+
+
 // Task 05
 // Создать класс машина - имеющий марку, число цилиндров, мощность. Определить конструктор и функцию печати.
 // Создать производный класс – грузовик, имеющий грузоподъемность кузова.
 // Определить функции переназначения марки и грузоподъемности.
 
+
 // just a plug
-export default () => {
-};
+export default () => {};

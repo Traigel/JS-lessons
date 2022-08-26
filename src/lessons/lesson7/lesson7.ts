@@ -39,13 +39,13 @@ class Animal {
 const dog = new Animal('Pet')
 console.log(dog.walk())
 
-
 //Task 02
 // Реализовать класс Monkey на базе класса Animal,  конструктор принимает name(по умолчанию 'Monkey') в качестве
 // параметра, реализовать методы roar и climb аналогично классу Animal
 // проверить, что все методы работают
 
 class Monkey extends Animal {
+
     roar() {
         console.log(`${this.name} roaring`)
     }
@@ -55,7 +55,9 @@ class Monkey extends Animal {
 }
 
 const monk = new Monkey('Monk')
+const monk2 = new Monkey()
 console.log(monk.roar())
+
 
 //Task 03
 // Реализовать класс Human на базе класса Monkey, конструктор принимает name(по умолчанию 'Human') в качестве
